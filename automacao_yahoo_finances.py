@@ -1,6 +1,6 @@
 import yfinance
-import pyautogui
-import pyperclip
+import pyautogui as py
+import pyperclip as pc
 import time
 
 #Buscando as cotações de uma Ação (ex: PETR4.SA)
@@ -38,44 +38,51 @@ Seu nome.
 
 #Automatizando o envio
 # configurar uma pausa entre as ações do pyautogui
-pyautogui.PAUSE = 3
+py.PAUSE = .6
+
+py.hotkey("alt","tab")
 
 # abrir uma nova aba
-pyautogui.hotkey("ctrl", "t")
+py.hotkey("ctrl", "t")
 
 # copiar o endereço do gmail para o clipboard
-pyperclip.copy("www.gmail.com")
+pc.copy("www.gmail.com")
+
 
 # colar o endereço do gmail e dar um ENTER
-pyautogui.hotkey("ctrl", "v")
-pyautogui.press("enter")
+py.hotkey("ctrl", "v")
+py.press("enter")
 
+time.sleep(7)
 # clicando no botão Escrever
-pyautogui.click(x=2034, y=210)
+py.press("tab", presses=14)
+py.press("enter")
+
+time.sleep(2)
 
 # Preenchendo o destinatário
-pyperclip.copy(destinatario)
-pyautogui.hotkey("ctrl", "v")
-pyautogui.press("tab")
+pc.copy(destinatario)
+py.hotkey("ctrl", "v")
+py.press("tab")
 
 # Preenchendo o assunto
-pyperclip.copy(assunto)
-pyautogui.hotkey("ctrl", "v")
-pyautogui.press("tab")
+pc.copy(assunto)
+py.hotkey("ctrl", "v")
+py.press("tab")
 
 # Preenchendo a mensagem
-pyperclip.copy(mensagem)
-pyautogui.hotkey("ctrl", "v")
+pc.copy(mensagem)
+py.hotkey("ctrl", "v")
 
 # Clicar no botão Enviar
-pyautogui.click(x=3107, y=975)
+py.hotkey("ctrl","enter")
 
 # fechar a aba do gmail
-pyautogui.hotkey("ctrl", "f4")
+py.hotkey("ctrl", "f4")
 
 # Imprimir mensagem de enviado com sucesso
 print('E-mail enviado com sucesso!')
 
 #Código para descobrir as coordenadas do mouse
 time.sleep(5)
-pyautogui.position()
+py.position()
