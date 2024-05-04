@@ -43,3 +43,15 @@ This Python code automates the process of analyzing a stock's historical data an
 ## Additional Notes
 
 The code snippet at the end (<code>time.sleep(5); py.position()</code>) is for demonstration purposes only. It retrieves the mouse cursor coordinates after a delay. You can remove this section.
+
+## Contributing
+
+Please feel free to fork the repository and submit pull requests.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contact
+
+If you have any questions or suggestions, please feel free to contact me.
