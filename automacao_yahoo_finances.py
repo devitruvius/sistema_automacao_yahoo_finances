@@ -3,27 +3,28 @@ import pyautogui as py
 import pyperclip as pc
 import time
 
-#Buscando as cotações de uma Ação (ex: PETR4.SA)
+
+# Seeking stock quotes (ex: PETR4.SA)
 ticker = input('Digite o código da ação: ')
 dados = yfinance.Ticker(ticker)
 
 dados.history()
 
-#Configurando o período histórico
+# Setting up the historical period
 tabela = dados.history("6mo")
 
-#Selecionando apenas a coluna de Fechamento (Close)
+# Selecting only the Closing column (Close)
 fechamento = tabela.Close
 
-#Gerando um gráfico de linha
+# Generating a line chart
 fechamento.plot()
 
-#Gerando as estatísticas
+# Generating the statistics
 maxima = fechamento.max()
 minima = fechamento.min()
 atual = fechamento[-1]
 
-#Criando o e-mail que será enviado
+# Creating the email to be sent
 destinatario = "seuemail@gmail.com"
 assunto = "Análise diária"
 mensagem = f"""
@@ -36,53 +37,53 @@ Atenciosamente,
 Seu nome.
 """
 
-#Automatizando o envio
-# configurar uma pausa entre as ações do pyautogui
+# Automating the sending process
+# Configuring a pause between PyAutoGUI actions
 py.PAUSE = .6
 
 py.hotkey("alt","tab")
 
-# abrir uma nova aba
+# Opening a new tab
 py.hotkey("ctrl", "t")
 
-# copiar o endereço do gmail para o clipboard
+# Copying the Gmail address to the clipboard
 pc.copy("www.gmail.com")
 
-
-# colar o endereço do gmail e dar um ENTER
+# Pasting the Gmail address and hitting ENTER
 py.hotkey("ctrl", "v")
 py.press("enter")
 
 time.sleep(7)
-# clicando no botão Escrever
+
+# Clicking the Compose button
 py.press("tab", presses=14)
 py.press("enter")
 
 time.sleep(2)
 
-# Preenchendo o destinatário
+# Filling in the recipient
 pc.copy(destinatario)
 py.hotkey("ctrl", "v")
 py.press("tab")
 
-# Preenchendo o assunto
+# Filling in the subject
 pc.copy(assunto)
 py.hotkey("ctrl", "v")
 py.press("tab")
 
-# Preenchendo a mensagem
+# Filling in the message
 pc.copy(mensagem)
 py.hotkey("ctrl", "v")
 
-# Clicar no botão Enviar
+# Clicking the Send button
 py.hotkey("ctrl","enter")
 
-# fechar a aba do gmail
+# Closing the Gmail tab
 py.hotkey("ctrl", "f4")
 
-# Imprimir mensagem de enviado com sucesso
+# Printing the message of successful sending
 print('E-mail enviado com sucesso!')
 
-#Código para descobrir as coordenadas do mouse
+# Code to discover mouse coordinates
 time.sleep(5)
 py.position()
